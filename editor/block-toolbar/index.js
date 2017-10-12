@@ -1,15 +1,14 @@
 /**
  * External dependencies
  */
-import { Slot } from 'react-slot-fill';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import { Slot, Fill } from 'react-slot-fill';
 import classnames from 'classnames';
 
 /**
  * WordPress Dependencies
  */
 import { IconButton, Toolbar, NavigableMenu } from '@wordpress/components';
-import { Component, Children, findDOMNode } from '@wordpress/element';
+import { Component, findDOMNode } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { focus, keycodes } from '@wordpress/utils';
 
@@ -26,11 +25,6 @@ import { isMac } from '../utils/dom';
  * Module Constants
  */
 const { ESCAPE, F10 } = keycodes;
-
-function FirstChild( { children } ) {
-	const childrenArray = Children.toArray( children );
-	return childrenArray[ 0 ] || null;
-}
 
 function metaKeyPressed( event ) {
 	return isMac() ? event.metaKey : ( event.ctrlKey && ! event.altKey );
@@ -114,45 +108,38 @@ class BlockToolbar extends Component {
 		} );
 
 		return (
-			<CSSTransitionGroup
-				transitionName={ { appear: 'is-appearing', appearActive: 'is-appearing-active' } }
-				transitionAppear={ true }
-				transitionAppearTimeout={ 100 }
-				transitionEnter={ false }
-				transitionLeave={ false }
-				component={ FirstChild }
-			>
+			<Fill name="Editor.Header">
 				<NavigableMenu
 					className={ toolbarClassname }
 					ref={ this.bindNode }
 					orientation="horizontal"
 					role="toolbar"
 					deep
+					onKeyDown={ this.onToolbarKeyDown }
+					aria-label={ __( 'Block\'s toolbar' ) }
 				>
-					<div className="editor-block-toolbar__group" onKeyDown={ this.onToolbarKeyDown }>
-						{ ! showMobileControls && [
-							<BlockSwitcher key="switcher" uid={ uid } />,
-							<Slot key="slot" name="Formatting.Toolbar" />,
-						] }
-						<Toolbar className="editor-block-toolbar__mobile-tools">
-							<IconButton
-								className="editor-block-toolbar__mobile-toggle"
-								onClick={ this.toggleMobileControls }
-								aria-expanded={ showMobileControls }
-								label={ __( 'Toggle extra controls' ) }
-								icon="ellipsis"
-							/>
+					{ ! showMobileControls && [
+						<BlockSwitcher key="switcher" uid={ uid } />,
+						<Slot key="slot" name="Formatting.Toolbar" />,
+					] }
+					<Toolbar className="editor-block-toolbar__mobile-tools">
+						<IconButton
+							className="editor-block-toolbar__mobile-toggle"
+							onClick={ this.toggleMobileControls }
+							aria-expanded={ showMobileControls }
+							label={ __( 'Toggle extra controls' ) }
+							icon="ellipsis"
+						/>
 
-							{ showMobileControls &&
-								<div className="editor-block-toolbar__mobile-tools-content">
-									<BlockMover uids={ [ uid ] } />
-									<BlockRightMenu uid={ uid } />
-								</div>
-							}
-						</Toolbar>
-					</div>
+						{ showMobileControls &&
+							<div className="editor-block-toolbar__mobile-tools-content">
+								<BlockMover uids={ [ uid ] } />
+								<BlockRightMenu uids={ [ uid ] } />
+							</div>
+						}
+					</Toolbar>
 				</NavigableMenu>
-			</CSSTransitionGroup>
+			</Fill>
 		);
 	}
 }
