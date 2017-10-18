@@ -115,13 +115,13 @@ registerBlockType( 'core/button', {
 							checked={ !! clear }
 							onChange={ toggleClear }
 						/>
-						<PanelBody title={ __( 'Button Background Color' ) }>
+						<PanelBody title={ __( 'Button Background' ) } colorValue={ color }>
 							<ColorPalette
 								value={ color }
 								onChange={ ( colorValue ) => setAttributes( { color: colorValue } ) }
 							/>
 						</PanelBody>
-						<PanelBody title={ __( 'Button Text Color' ) }>
+						<PanelBody title={ __( 'Button Text' ) } colorValue={ textColor }>
 							<ColorPalette
 								value={ textColor }
 								onChange={ ( colorValue ) => setAttributes( { textColor: colorValue } ) }
