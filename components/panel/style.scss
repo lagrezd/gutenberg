@@ -59,6 +59,20 @@
 	padding: 0;
 	font-size: inherit;
 	margin-bottom: 0;
+
+	.components-panel__body-title__text-span {
+    	position: relative;
+    	float: left;
+	}
+
+	.components-panel__body-title__color-span {
+		width: 25px;
+		height: 16px;
+		position: relative;
+		float: left;
+		margin-left: 15px;
+		border: 1px solid #DADADA;
+	}
 }
 .components-panel__body.is-opened > .components-panel__body-title {
 	margin: -1 * $panel-padding;
