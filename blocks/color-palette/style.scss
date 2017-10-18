@@ -3,6 +3,11 @@ $color-palette-circle-spacing: 14px;
 
 .blocks-color-palette {
 	margin-right: -14px;
+
+	button.blocks-color-palette__clear-button {
+		float: right;
+		margin-right: 20px;
+	}
 }
 
 .blocks-color-palette__item-wrapper {
@@ -126,3 +131,4 @@ $color-palette-circle-spacing: 14px;
 .blocks-color-palette__picker .chrome-picker {
 	width: 100% !important;
 }
+
