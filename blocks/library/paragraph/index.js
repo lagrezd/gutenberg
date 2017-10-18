@@ -131,13 +131,13 @@ registerBlockType( 'core/paragraph', {
 							allowReset
 						/>
 					</PanelBody>
-					<PanelBody title={ __( 'Background Color' ) }>
+					<PanelBody title={ __( 'Background' ) } colorValue={ backgroundColor }>
 						<ColorPalette
 							value={ backgroundColor }
 							onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
 						/>
 					</PanelBody>
-					<PanelBody title={ __( 'Text Color' ) }>
+					<PanelBody title={ __( 'Text' ) } colorValue={ textColor }>
 						<ColorPalette
 							value={ textColor }
 							onChange={ ( colorValue ) => setAttributes( { textColor: colorValue } ) }
