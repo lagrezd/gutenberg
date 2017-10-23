@@ -8,7 +8,7 @@ import classnames from 'classnames';
  */
 import { __ } from '@wordpress/i18n';
 import { concatChildren } from '@wordpress/element';
-import { PanelBody } from '@wordpress/components';
+import { PanelBody, PanelColor } from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -131,18 +131,18 @@ registerBlockType( 'core/paragraph', {
 							allowReset
 						/>
 					</PanelBody>
-					<PanelBody title={ __( 'Background' ) } colorValue={ backgroundColor }>
+					<PanelColor title={ __( 'Background' ) } colorValue={ backgroundColor }>
 						<ColorPalette
 							value={ backgroundColor }
 							onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
 						/>
-					</PanelBody>
-					<PanelBody title={ __( 'Text' ) } colorValue={ textColor }>
+					</PanelColor>
+					<PanelColor title={ __( 'Text' ) } colorValue={ textColor }>
 						<ColorPalette
 							value={ textColor }
 							onChange={ ( colorValue ) => setAttributes( { textColor: colorValue } ) }
 						/>
-					</PanelBody>
+					</PanelColor>
 					<PanelBody title={ __( 'Block Alignment' ) }>
 						<BlockAlignmentToolbar
 							value={ width }

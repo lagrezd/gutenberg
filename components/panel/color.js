@@ -12,7 +12,8 @@ function PanelColor( { colorValue, ...props } ) {
 				colorValue &&
 				<span
 					className="components-panel__color-span"
-					style={ { background: colorValue } } />
+					style={ { background: colorValue } }
+				/>
 			}
 		/>
 	);
