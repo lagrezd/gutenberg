@@ -37,7 +37,7 @@ class PanelBody extends Component {
 	}
 
 	render() {
-		const { title, children, opened, className, colorValue } = this.props;
+		const { title, children, opened, className, customTitleArea } = this.props;
 		const isOpened = opened === undefined ? this.state.opened : opened;
 		const icon = `arrow-${ isOpened ? 'down' : 'right' }`;
 		const classes = classnames( 'components-panel__body', className, { 'is-opened': isOpened } );
@@ -55,11 +55,7 @@ class PanelBody extends Component {
 							<span className="components-panel__body-title__text-span">
 								{ title }
 							</span>
-							{ colorValue &&
-								<span
-									className="components-panel__body-title__color-span"
-									style={ { background: colorValue } } />
-							}
+							{customTitleArea}
 						</Button>
 					</h3>
 				) }

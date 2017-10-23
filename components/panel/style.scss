@@ -99,6 +99,15 @@
 	margin-right: -5px;
 }
 
+.components-panel__color-span {
+	width: 25px;
+	height: 16px;
+	position: relative;
+	float: left;
+	margin-left: 15px;
+	border: 1px solid #DADADA;
+}
+
 .components-panel__row {
 	display: flex;
 	justify-content: space-between;
@@ -113,3 +122,4 @@
 .components-panel .circle-picker {
 	padding-bottom: 20px;
 }
+
